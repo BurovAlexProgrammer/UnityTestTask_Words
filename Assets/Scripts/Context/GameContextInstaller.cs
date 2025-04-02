@@ -1,4 +1,4 @@
-﻿using AppCoreModule.Scripts.Services;
+﻿using Services;
 using UnityEngine;
 using Zenject;
 

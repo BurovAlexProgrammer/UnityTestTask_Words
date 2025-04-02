@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using Services;
+using Zenject;
 
 namespace Context
 {
@@ -6,7 +7,7 @@ namespace Context
     {
         public override void InstallBindings()
         {
-            
+            Container.Bind<SettingsProvider>().FromNew().AsSingle();
         }
     }
 }

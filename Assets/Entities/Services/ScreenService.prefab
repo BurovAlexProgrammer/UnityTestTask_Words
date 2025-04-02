@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6792946181397373829}
-  - component: {fileID: 8715891168012720814}
+  - component: {fileID: 5376496764749373215}
   m_Layer: 0
   m_Name: ScreenService
   m_TagString: Untagged
@@ -137,7 +137,7 @@ Transform:
   - {fileID: 1394397213351920179}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8715891168012720814
+--- !u!114 &5376496764749373215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2629125928156491336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1767e24241434887a40f8e9920b9d7b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 68c8f72f9a04411ebf6d2c617841f9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _screenCanvas: {fileID: 3029183441620057125}
