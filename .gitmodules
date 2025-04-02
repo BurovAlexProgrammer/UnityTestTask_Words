@@ -1,0 +1,3 @@
+[submodule "Assets/submodule_appCore"]
+	path = Assets/submodule_appCore
+	url = https://github.com/BurovAlexProgrammer/AppCoreModule.git
