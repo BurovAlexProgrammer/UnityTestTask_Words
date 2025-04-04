@@ -1,4 +1,5 @@
-﻿using Services;
+﻿using GameCore;
+using Services;
 using UnityEngine;
 using Zenject;
 
@@ -10,7 +11,9 @@ namespace Context
         
         public override void InstallBindings()
         {
+            // LevelSerializer.GenerateFiles();
             Container.Bind<ScreenService>().FromComponentInNewPrefab(_screenServicePrefab).AsSingle();
+            Container.BindInterfacesAndSelfTo<LevelProvider>().FromNew().AsSingle();
         }
     }
 }
