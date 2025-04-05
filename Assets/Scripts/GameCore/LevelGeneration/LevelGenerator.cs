@@ -36,7 +36,7 @@ namespace GameCore.LevelGeneration
             var levelData = new LevelData()
             {
                 Level = level,
-                Word = Enumerable.Range(0, wordsCount)
+                Words = Enumerable.Range(0, wordsCount)
                     .Select(i => new Word
                     {
                         Text = _mockup[startIndex + i],
