@@ -1,4 +1,5 @@
 ﻿using AppCoreModule.Scripts.UI.Screens;
+using UnityEngine;
 using Zenject;
 
 namespace Services
@@ -7,6 +8,8 @@ namespace Services
     {
         [Inject] private DiContainer _diContainer;
 
+        public Canvas DragDropCanvas;
+        
         protected override BaseScreen InstantiateScreen(BaseScreen screenPrefab)
         {
             var newScreen = _diContainer.InstantiatePrefabForComponent<BaseScreen>(screenPrefab, _screenCanvas.transform);

@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine.Serialization;
 
 namespace GameCore.Models
 {
@@ -7,7 +6,7 @@ namespace GameCore.Models
     public struct LevelData
     {
         public int Level;
-        [FormerlySerializedAs("Word")] public Word[] Words;
+        public Word[] Words;
     }
     
     [Serializable]

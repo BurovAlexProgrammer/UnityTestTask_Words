@@ -11,7 +11,7 @@ namespace GameCore.LevelControl.Views
         public State CurrentState { get; private set; }
         
         public event Action Changed;
-
+        
         public bool HasCluster => _attachedCluster != default;
         public string ClusterValue => _attachedCluster == null ? null : _attachedCluster.Cluster.Letters;
 
