@@ -8,7 +8,7 @@ namespace UI.TransitEffects
 {
     public class CloseScreenEffect : ITransitEffect
     {
-        private const float Time = 0.5f;
+        private const float Time = 0.3f;
 
         public async UniTask RunAsync(GameObject targetGameObject)
         {

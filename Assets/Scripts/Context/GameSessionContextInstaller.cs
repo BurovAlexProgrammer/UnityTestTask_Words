@@ -12,8 +12,8 @@ namespace Context
 
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<GameSessionController>().FromInstance(_gameSessionController).AsSingle();
-            Container.BindInterfacesAndSelfTo<LevelController>().FromInstance(_levelController).AsSingle();
+            Container.BindInterfacesAndSelfTo<GameSessionController>().FromInstance(_gameSessionController).AsCached();
+            Container.BindInterfacesAndSelfTo<LevelController>().FromInstance(_levelController).AsTransient();
         }
     }
 }

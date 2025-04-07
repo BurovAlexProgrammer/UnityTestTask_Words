@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using GameCore.LevelControl;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -10,18 +11,20 @@ namespace Services
 {
     public class GameSessionController : MonoBehaviour
     {
+        [Inject] private DiContainer _diContainer;
         [Inject] private ScreenService _screenService;
         [Inject] private LevelProvider _levelProvider;
-        [Inject] private LevelController _levelController;
         
+        [SerializeField] private LevelController _levelControllerPrefab;
         [SerializeField] private TextMeshProUGUI _levelText;
         [SerializeField] private Button _mainMenuButton;
 
-        private int _currentLevel = 1;
+        private LevelController _currentLevelController;
+        private int _currentLevel;
         
         public void Start()
         {
-            IniAsync().Forget();
+            InitAsync().Forget();
         }
 
         private void OnDestroy()
@@ -29,11 +32,24 @@ namespace Services
             _mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
         }
 
-        private async UniTask IniAsync()
+        private async UniTask InitAsync()
         {
             _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
-            var level = await _levelProvider.GetLevel(_currentLevel);
-            _levelController.Init(level);
+            StartLevelAsync().Forget();
+        }
+
+        private void OnLevelFinished()
+        {
+            StartLevelAsync().Forget();
+        }
+
+        private async UniTask StartLevelAsync()
+        {
+            _currentLevel++;
+            _currentLevelController = _diContainer.InstantiatePrefabForComponent<LevelController>(_levelControllerPrefab);
+            _currentLevelController.Finished += OnLevelFinished;
+            var levelData = await _levelProvider.GetLevel(_currentLevel);
+            _currentLevelController.Init(levelData);
         }
 
         private void OnMainMenuButtonClicked()

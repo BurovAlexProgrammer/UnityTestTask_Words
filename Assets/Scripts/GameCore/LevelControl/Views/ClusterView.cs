@@ -33,7 +33,7 @@ namespace GameCore.LevelControl.Views
         /// </summary>
         public event Action<ClusterView, ClusterPlaceholderView> DroppedToPlaceholder;
 
-        public event Action<ClusterView> DroppedToPanel;
+        public event Action<ClusterView, ClusterPlaceholderView> DroppedToPanel;
 
         public Cluster Cluster { get; private set; }
 
@@ -69,9 +69,10 @@ namespace GameCore.LevelControl.Views
                 return;
             }
 
-            if (eventData.hovered.Any(x => x.CompareTag(ClustersPanel)))
+            if (eventData.hovered.Any(x => x.CompareTag(ClustersPanel)) && _originalParent.CompareTag(ClustersPanel) == false)
             {
-                DroppedToPanel?.Invoke(this);
+                var parent = _originalParent.GetComponent<ClusterPlaceholderView>();
+                DroppedToPanel?.Invoke(this, parent);
                 Debug.Log($"DroppedToPanel: cluster[{gameObject.name}] to panel");
                 return;
             }

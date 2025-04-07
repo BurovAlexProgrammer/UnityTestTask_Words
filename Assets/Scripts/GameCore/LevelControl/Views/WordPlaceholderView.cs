@@ -15,6 +15,7 @@ namespace GameCore.LevelControl.Views
         [SerializeField] private ClusterPlaceholderView _clusterPlaceholderPrefab;
         [SerializeField, ReadOnly] private ClusterPlaceholderView[] _clusterPlaceholders;
         
+        private ClusterPlaceholderView.State _currentState;
         private StringBuilder _stringBuilder = new();
         private Transform _transform;
         private Word _word;
@@ -23,6 +24,8 @@ namespace GameCore.LevelControl.Views
 
         public string ResultWord => _stringBuilder.ToString();
         public bool HasEmptyClusters => _clusterPlaceholders.Any(x => x.HasCluster == false);
+        public ClusterPlaceholderView.State CurrentState => _currentState;
+
 
         public void Init(Word word)
         {
@@ -41,6 +44,7 @@ namespace GameCore.LevelControl.Views
 
         public void SetClustersState(ClusterPlaceholderView.State state)
         {
+            _currentState = state;
             foreach (var clusterPlaceholder in _clusterPlaceholders)
             {
                 clusterPlaceholder.SetState(state);
