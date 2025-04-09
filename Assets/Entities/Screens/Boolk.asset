@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b0626614674e039b6867b7103d2c96, type: 3}
+  m_Name: Boolk
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: e0610ae031d5b5b4b8ff2082a4db76c1, type: 3}
+  - {fileID: 8300000, guid: ddfa24592dd608c4fb1bf5c87ca7f395, type: 3}
+  - {fileID: 8300000, guid: 08941996380d0874dad7a93960da051d, type: 3}
+  - {fileID: 8300000, guid: 091d269b6b6171a4ca0ce1256028e5f6, type: 3}
+  _volume:
+    MinValue: 0.8
+    MaxValue: 1
+  _pitch:
+    MinValue: 0.8
+    MaxValue: 1.1913702

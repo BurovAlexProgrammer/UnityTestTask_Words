@@ -16,6 +16,7 @@ namespace GameCore.LevelControl.Views
 {
     public class ClusterView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
+        [Inject] private AudioService _audioService;
         [Inject] private ScreenService _screenService;
 
         [SerializeField] private TextMeshProUGUI _textView;
@@ -64,6 +65,7 @@ namespace GameCore.LevelControl.Views
 
             if (placeholder != null && placeholder.HasCluster == false)
             {
+                _audioService.PlayBoolk();
                 DroppedToPlaceholder?.Invoke(this, placeholder);
                 Debug.Log($"DroppedToPlaceholder: cluster[{gameObject.name}] to placeholder[{placeholder.gameObject.name}]");
                 return;
@@ -72,6 +74,7 @@ namespace GameCore.LevelControl.Views
             if (eventData.hovered.Any(x => x.CompareTag(ClustersPanel)) && _originalParent.CompareTag(ClustersPanel) == false)
             {
                 var parent = _originalParent.GetComponent<ClusterPlaceholderView>();
+                _audioService.PlayBoolk();
                 DroppedToPanel?.Invoke(this, parent);
                 Debug.Log($"DroppedToPanel: cluster[{gameObject.name}] to panel");
                 return;

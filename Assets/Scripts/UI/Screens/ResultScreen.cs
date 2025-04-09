@@ -13,8 +13,9 @@ namespace UI.Screens
 {
     public class ResultScreen : BaseScreen
     {
-        [Inject] private ScreenService _screenService;
         [Inject] private SessionResultService _sessionResultService;
+        [Inject] private ScreenService _screenService;
+        [Inject] private AudioService _audioService;
 
         [SerializeField] private Transform _wordsTextsContainer;
         [SerializeField] private TextMeshProUGUI _wordTextPrefab;
@@ -42,6 +43,7 @@ namespace UI.Screens
                 wordView.text = claimedWords[x - 1];
                 DoFadeIn(wordView.transform);
                 DoFadeIn(_wordsCountText.transform, Vector3.one * 0.2f);
+                _audioService.PlayBoolk();
             }).SetDelay(0.5f);
         }
 
