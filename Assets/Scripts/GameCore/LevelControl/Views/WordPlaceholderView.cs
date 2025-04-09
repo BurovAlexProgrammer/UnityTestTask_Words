@@ -10,7 +10,7 @@ namespace GameCore.LevelControl.Views
 {
     public class WordPlaceholderView : MonoBehaviour
     {
-        [Inject] private DiContainer _diContainer;
+        [Inject] private DiContainer _diContainer; 
 
         [SerializeField] private ClusterPlaceholderView _clusterPlaceholderPrefab;
         [SerializeField, ReadOnly] private ClusterPlaceholderView[] _clusterPlaceholders;
@@ -37,7 +37,6 @@ namespace GameCore.LevelControl.Views
             {
                 _clusterPlaceholders[i] = Instantiate(_clusterPlaceholderPrefab, _transform);
                 _diContainer.Inject(_clusterPlaceholders[i]);
-                // _clusterPlaceholders[i].Init();
                 _clusterPlaceholders[i].Changed += OnClusterViewChanged;
             }
         }

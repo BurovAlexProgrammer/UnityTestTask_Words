@@ -1,7 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GameCore.Models
 {
+    //For level generator
+    [Serializable]
+    public struct LevelConfigs
+    {
+        public List<LevelData> Levels;
+    }
+    
     [Serializable]
     public struct LevelData
     {

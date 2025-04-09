@@ -15,23 +15,28 @@ namespace GameCore.LevelGeneration
             "ворота", "гитара", "гранат", "дорога", "жемчуг", "камень", "кнопка", "колено", "корона", "лисица",
             "молоко", "огурец", "пальто", "ракета", "солнце", "улитка", "фонарь", "хоккей", "береза"
         };
+
         private const int WordsCount = 4;
-        
+
         public static void GenerateFiles()
         {
-            var dicIndex = 0; 
-                
+            var dicIndex = 0;
+            var levelsConfig = new LevelConfigs();
+            levelsConfig.Levels = new List<LevelData>(4);
+
             for (var i = 0; i < 4; i++)
             {
-                var path = Path.Combine(Application.dataPath, "Data", "Levels");
-                var levelJson = CreateLevelJson(i + 1, dicIndex, WordsCount);
-                var filePath = Path.Combine(path, $"level{i + 1}.json");
-                File.WriteAllText(filePath, levelJson);
+                var levelData = CreateLevelJson(i + 1, dicIndex, WordsCount);
                 dicIndex += WordsCount;
+                levelsConfig.Levels.Add(levelData);
             }
+            
+            var path = Path.Combine(Application.dataPath, "Data", "Levels");
+            var filePath = Path.Combine(path, "levels.json");
+            File.WriteAllText(filePath, JsonUtility.ToJson(levelsConfig));
         }
 
-        private static string CreateLevelJson(int level, int startIndex, int wordsCount)
+        private static LevelData CreateLevelJson(int level, int startIndex, int wordsCount)
         {
             var levelData = new LevelData()
             {
@@ -45,7 +50,7 @@ namespace GameCore.LevelGeneration
                     .ToArray()
             };
 
-            return JsonUtility.ToJson(levelData);
+            return levelData;
         }
 
         static IEnumerable<Cluster> SplitWord(string word)
@@ -57,14 +62,14 @@ namespace GameCore.LevelGeneration
                 var clusterLength = Random.Range(2, 5);
 
                 //Prevent one word in next segment
-                if (clusterLength + i > word.Length - 2 && clusterLength < 3) 
+                if (clusterLength + i > word.Length - 2 && clusterLength < 3)
                     clusterLength += 2;
-                
-                if (i + clusterLength > word.Length) 
+
+                if (i + clusterLength > word.Length)
                     clusterLength = word.Length - i;
 
                 yield return new Cluster { Letters = word.Substring(i, clusterLength) };
-                
+
                 i += clusterLength;
             }
         }

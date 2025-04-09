@@ -1,1 +1,16 @@
-{"Level":3,"Words":[{"Text":"остров","Clusters":[{"Letters":"ост"},{"Letters":"ров"}]},{"Text":"банкет","Clusters":[{"Letters":"бан"},{"Letters":"кет"}]},{"Text":"ворота","Clusters":[{"Letters":"воро"},{"Letters":"та"}]},{"Text":"гитара","Clusters":[{"Letters":"ги"},{"Letters":"та"},{"Letters":"ра"}]}]}
+{
+  "Level": 3,
+  "Words": [
+    {
+      "Text": "остров",
+      "Clusters": [
+        {
+          "Letters": "ост"
+        },
+        {
+          "Letters": "ров"
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,8 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using GameCore.LevelControl;
+using GameCore.Models;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -20,7 +19,7 @@ namespace Services
         [SerializeField] private Button _mainMenuButton;
 
         private LevelController _currentLevelController;
-        private int _currentLevel;
+        private int _currentLevel = 3;
         
         public void Start()
         {
@@ -35,11 +34,12 @@ namespace Services
         private async UniTask InitAsync()
         {
             _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
-            StartLevelAsync().Forget();
+            await StartLevelAsync();
         }
 
-        private void OnLevelFinished()
+        private void OnLevelFinished(LevelData levelData)
         {
+            // _claimedWords.AddRange(levelData.Words.Select(x => x.Text).ToArray());
             StartLevelAsync().Forget();
         }
 
@@ -48,13 +48,27 @@ namespace Services
             _currentLevel++;
             _currentLevelController = _diContainer.InstantiatePrefabForComponent<LevelController>(_levelControllerPrefab);
             _currentLevelController.Finished += OnLevelFinished;
-            var levelData = await _levelProvider.GetLevel(_currentLevel);
-            _currentLevelController.Init(levelData);
+
+            if (_currentLevel <= LevelProvider.MaxLevel)
+            {
+                var levelData = await _levelProvider.GetLevel(_currentLevel);
+                _currentLevelController.Init(levelData);
+            }
+            else
+            {
+                GameOver().Forget();
+            }
         }
 
         private void OnMainMenuButtonClicked()
         {
             _screenService.GoBack();
+        }
+
+        private async UniTask GameOver()
+        {
+            var resultScreen = await ResourceProvider.GetScreenPrefabAsync(ResourceProvider.ScreenNames.ResultScreen);
+            await _screenService.OpenScreenAsync(resultScreen, true);
         }
     }
 }

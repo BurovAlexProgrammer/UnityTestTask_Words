@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Settings
   m_GUID: 1ef3f516983b89d449d6e20de2ed8bd4
   m_SerializeEntries:
-  - m_GUID: 3fa3f284be7817a4794eff36d7bdea3d
+  - m_GUID: 89d83172f24aa3d46be8fcd5959b560c
     m_Address: SettingsScreen
     m_ReadOnly: 0
     m_SerializedLabels: []

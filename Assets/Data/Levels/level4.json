@@ -1,1 +1,27 @@
-{"Level":4,"Words":[{"Text":"гранат","Clusters":[{"Letters":"гран"},{"Letters":"ат"}]},{"Text":"дорога","Clusters":[{"Letters":"доро"},{"Letters":"га"}]},{"Text":"жемчуг","Clusters":[{"Letters":"жем"},{"Letters":"чуг"}]},{"Text":"камень","Clusters":[{"Letters":"кам"},{"Letters":"ень"}]}]}
+{
+  "Level": 4,
+  "Words": [
+    {
+      "Text": "гранат",
+      "Clusters": [
+        {
+          "Letters": "гран"
+        },
+        {
+          "Letters": "ат"
+        }
+      ]
+    },
+    {
+      "Text": "жемчуг",
+      "Clusters": [
+        {
+          "Letters": "жем"
+        },
+        {
+          "Letters": "чуг"
+        }
+      ]
+    }
+  ]
+}

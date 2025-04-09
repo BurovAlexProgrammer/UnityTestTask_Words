@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GameCore.LevelControl.Views;
 using GameCore.Models;
+using Services;
 using UnityEngine;
 using Zenject;
 using static GameCore.LevelControl.Views.ClusterPlaceholderView.State;
@@ -12,13 +13,14 @@ namespace GameCore.LevelControl
     public class LevelController : MonoBehaviour
     {
         [Inject] private DiContainer _diContainer;
+        [Inject] private SessionResultService _sessionResultService;
         
         [SerializeField] private Transform _wordsContainer;
         [SerializeField] private Transform _clustersContainer;
         [SerializeField] private WordPlaceholderView _wordPlaceholderPrefab;
         [SerializeField] private ClusterView _clusterPrefab;
 
-        public event Action Finished;
+        public event Action<LevelData> Finished;
         
         private readonly List<WordPlaceholderView> _wordPlaceholders = new();
         private string[] _words;
@@ -26,6 +28,7 @@ namespace GameCore.LevelControl
 
         public void Init(LevelData levelData)
         {
+            _sessionResultService.Init();
             _levelData = levelData;
 
             for (var i = 0; i < levelData.Words.Length; i++)
@@ -46,6 +49,11 @@ namespace GameCore.LevelControl
                 cluster.DroppedToPlaceholder += OnClusterDroppedToPlaceholder;
                 cluster.DroppedToPanel += ClusterOnDroppedToPanel;
             }
+        }
+
+        public void Destroy()
+        {
+            Destroy(gameObject);
         }
 
         private void ClusterOnDroppedToPanel(ClusterView clusterView, ClusterPlaceholderView placeholderView)
@@ -74,6 +82,7 @@ namespace GameCore.LevelControl
 
             if (_wordPlaceholders.All(x => x.CurrentState == Right))
             {
+                _wordPlaceholders.ForEach(x => _sessionResultService.AddClaimedWord(x.ResultWord));
                 FinishLevel();
             }
         }
@@ -81,7 +90,7 @@ namespace GameCore.LevelControl
         private void FinishLevel()
         {
             Destroy(gameObject);
-            Finished?.Invoke();
+            Finished?.Invoke(_levelData);
         }
     }
 }

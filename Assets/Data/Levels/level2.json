@@ -1,1 +1,16 @@
-{"Level":2,"Words":[{"Text":"солнце","Clusters":[{"Letters":"солн"},{"Letters":"це"}]},{"Text":"фонарь","Clusters":[{"Letters":"фон"},{"Letters":"арь"}]},{"Text":"сирень","Clusters":[{"Letters":"сир"},{"Letters":"ень"}]},{"Text":"лопата","Clusters":[{"Letters":"лоп"},{"Letters":"ата"}]}]}
+{
+  "Level": 2,
+  "Words": [
+    {
+      "Text": "солнце",
+      "Clusters": [
+        {
+          "Letters": "солн"
+        },
+        {
+          "Letters": "це"
+        }
+      ]
+    }
+  ]
+}

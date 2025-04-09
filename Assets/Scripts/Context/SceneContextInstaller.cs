@@ -12,8 +12,10 @@ namespace Context
         public override void InstallBindings()
         {
             // LevelSerializer.GenerateFiles();
+            Container.BindInterfacesAndSelfTo<RemoteConfigProvider>().AsSingle().NonLazy();
             Container.Bind<ScreenService>().FromComponentInNewPrefab(_screenServicePrefab).AsSingle();
             Container.BindInterfacesAndSelfTo<LevelProvider>().FromNew().AsSingle();
+            Container.BindInterfacesAndSelfTo<SessionResultService>().FromNew().AsCached();
         }
     }
 }

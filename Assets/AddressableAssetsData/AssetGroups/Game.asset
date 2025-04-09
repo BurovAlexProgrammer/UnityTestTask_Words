@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Game
   m_GUID: 0c4795243f1f3aa4199a20ce8abd3e15
   m_SerializeEntries:
+  - m_GUID: 3fa3f284be7817a4794eff36d7bdea3d
+    m_Address: ResultScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b79e9f7591c2d994b81a91405a7b3318
     m_Address: GameScreen
     m_ReadOnly: 0
