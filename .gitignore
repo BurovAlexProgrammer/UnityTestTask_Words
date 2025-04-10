@@ -1,4 +1,5 @@
-﻿/Assets/Temp/
+﻿/.utmp/
+/Assets/Temp/
 /Assets/Cache/
 
 # This .gitignore file should be placed at the root of your Unity project directory

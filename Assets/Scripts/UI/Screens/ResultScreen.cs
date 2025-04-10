@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using AppCoreModule.Scripts.UI.Screens;
+﻿using AppCoreModule.Scripts.UI.Screens;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Services;

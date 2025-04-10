@@ -19,7 +19,7 @@ namespace Services
         [SerializeField] private Button _mainMenuButton;
 
         private LevelController _currentLevelController;
-        private int _currentLevel = 3;
+        private int _currentLevel = 0;
         
         public void Start()
         {
