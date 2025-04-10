@@ -614,6 +614,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4994285186848591815, guid: 499683b2ef190134a9e531584a9d9632, type: 3}
+      propertyPath: m_TagString
+      value: ClustersPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 6834127694919929609, guid: 499683b2ef190134a9e531584a9d9632, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

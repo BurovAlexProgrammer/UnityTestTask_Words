@@ -14,14 +14,14 @@ namespace GameCore.LevelControl
     {
         [Inject] private DiContainer _diContainer;
         [Inject] private SessionResultService _sessionResultService;
-        
+
         [SerializeField] private Transform _wordsContainer;
         [SerializeField] private Transform _clustersContainer;
         [SerializeField] private WordPlaceholderView _wordPlaceholderPrefab;
         [SerializeField] private ClusterView _clusterPrefab;
 
         public event Action<LevelData> Finished;
-        
+
         private readonly List<WordPlaceholderView> _wordPlaceholders = new();
         private string[] _words;
         private LevelData _levelData;
@@ -41,7 +41,7 @@ namespace GameCore.LevelControl
             }
 
             var clusters = _levelData.Words.SelectMany(x => x.Clusters).ToArray();
-            
+
             for (var i = 0; i < clusters.Count(); i++)
             {
                 var cluster = _diContainer.InstantiatePrefabForComponent<ClusterView>(_clusterPrefab, _clustersContainer);
@@ -64,6 +64,9 @@ namespace GameCore.LevelControl
 
         private void OnClusterDroppedToPlaceholder(ClusterView clusterView, ClusterPlaceholderView placeholderView)
         {
+            if (clusterView.PrevClusterPlaceholder != null && clusterView.PrevClusterPlaceholder != placeholderView)
+                clusterView.PrevClusterPlaceholder.Detach(clusterView);
+
             placeholderView.Attach(clusterView);
             clusterView.PlaceTo(placeholderView.transform);
         }

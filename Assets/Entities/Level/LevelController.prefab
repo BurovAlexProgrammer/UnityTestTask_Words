@@ -382,7 +382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2175143683312320086, guid: a809e61d7baa5444380fe697ebbdeb94, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: ClustersPanel
       objectReference: {fileID: 0}
     - target: {fileID: 3143237294000295407, guid: a809e61d7baa5444380fe697ebbdeb94, type: 3}
       propertyPath: m_Pivot.x

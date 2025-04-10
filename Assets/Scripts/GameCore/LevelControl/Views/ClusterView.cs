@@ -25,6 +25,7 @@ namespace GameCore.LevelControl.Views
 
         private const string ClustersPanel = "ClustersPanel";
 
+        private ClusterPlaceholderView _prevClusterPlaceholder;
         private RectTransform _rectTransform;
         private Transform _originalParent;
         private int _originalSiblingIndex;
@@ -37,6 +38,8 @@ namespace GameCore.LevelControl.Views
         public event Action<ClusterView, ClusterPlaceholderView> DroppedToPanel;
 
         public Cluster Cluster { get; private set; }
+
+        public ClusterPlaceholderView PrevClusterPlaceholder => _prevClusterPlaceholder;
 
         public void Init(Cluster cluster)
         {
@@ -67,6 +70,7 @@ namespace GameCore.LevelControl.Views
             {
                 _audioService.PlayBoolk();
                 DroppedToPlaceholder?.Invoke(this, placeholder);
+                _prevClusterPlaceholder = placeholder;
                 Debug.Log($"DroppedToPlaceholder: cluster[{gameObject.name}] to placeholder[{placeholder.gameObject.name}]");
                 return;
             }
@@ -76,6 +80,7 @@ namespace GameCore.LevelControl.Views
                 var parent = _originalParent.GetComponent<ClusterPlaceholderView>();
                 _audioService.PlayBoolk();
                 DroppedToPanel?.Invoke(this, parent);
+                _prevClusterPlaceholder = null;
                 Debug.Log($"DroppedToPanel: cluster[{gameObject.name}] to panel");
                 return;
             }

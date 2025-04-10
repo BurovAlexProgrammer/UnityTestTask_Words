@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3143237294000295407}
   m_Layer: 5
   m_Name: BottomPanel
-  m_TagString: Untagged
+  m_TagString: ClustersPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
