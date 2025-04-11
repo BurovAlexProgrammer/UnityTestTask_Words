@@ -1,6 +1,10 @@
 На стартовой сцене GameScene, SceneContext подгружает префаб ProjectContext, где ProjectContextInstaller инициализирует базовые сервисы из сабмодуля submodule_appCore. 
+
 Далее SceneContext инициализирует SceneContextInstaller и инициализирует бизнесовые сервисы.
+
 После инициализации сервисов, запускается компонент EntryPoint, который является точкой входа для бизнес логики.
+
+
 
 Структура проекта
 
